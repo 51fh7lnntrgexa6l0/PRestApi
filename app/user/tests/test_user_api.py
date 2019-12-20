@@ -52,9 +52,9 @@ class PublicUseApiTests(TestCase):
     def test_password_too_short(self):
         """Password must be > 5 chars """
         payload = {
-            'email': 'abc@abc.com',
-            'password': '123',
-            'name': 'Test Name'
+            'email': 'abc123@abc132.com',
+            'password': '12',
+            'name': 'Test_Name'
         }
         create_user(**payload)
         res = self.client.post(CREATE_USER_URL, payload)
@@ -64,7 +64,6 @@ class PublicUseApiTests(TestCase):
             email=payload['email']
         ).exists()
         self.assertFalse(user_exists)
-
 
     def test_create_token_for_user(self):
         """Test that a token is created for the user"""
